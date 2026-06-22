@@ -5,8 +5,26 @@ import RevealOnScroll from "./RevealOnScroll";
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center px-6 pt-24 pb-16">
-      <div className="max-w-4xl mx-auto text-center">
+    <section className="relative min-h-screen flex items-center justify-center px-6 pt-24 pb-16 overflow-hidden">
+      {/* Hero background photo */}
+      <img
+        src="https://images.unsplash.com/photo-1558301211-0d8c8ddee6ec?w=1600&h=900&fit=crop"
+        alt=""
+        aria-hidden="true"
+        className="absolute inset-0 w-full h-full object-cover"
+        style={{ zIndex: 0 }}
+      />
+      {/* Dark gradient overlay */}
+      <div
+        className="absolute inset-0"
+        style={{
+          background: "linear-gradient(to bottom, rgba(16,12,24,0.75) 0%, rgba(16,12,24,0.85) 60%, #100C18 100%)",
+          zIndex: 1,
+        }}
+        aria-hidden="true"
+      />
+
+      <div className="max-w-4xl mx-auto text-center relative" style={{ zIndex: 10 }}>
         <RevealOnScroll>
           <div className="glass-badge mb-8 inline-flex">
             <Sparkles className="w-4 h-4 text-secondary" />
