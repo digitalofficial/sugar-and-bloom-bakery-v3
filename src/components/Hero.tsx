@@ -1,20 +1,16 @@
 "use client";
 
-import dynamic from "next/dynamic";
 import { Sparkles } from "lucide-react";
-
-// Dynamically import 3D scene — no SSR, loads only on client
-const CakeScene = dynamic(() => import("./CakeScene"), { ssr: false });
 
 export default function Hero() {
   return (
-    <section style={{ position: "relative", height: "250vh", background: "linear-gradient(to bottom, #100C18, #0C0816, #100C18)" }}>
-      <div style={{ position: "sticky", top: 0, height: "100vh", overflow: "hidden", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
+    <section style={{ position: "relative", background: "linear-gradient(to bottom, #100C18, #0C0816, #100C18)" }}>
+      <div style={{ minHeight: "100vh", overflow: "hidden", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", padding: "80px 24px 60px" }}>
         {/* Subtle bg glow */}
         <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse 60% 50% at 50% 40%, rgba(255,133,162,0.06), transparent 70%)", pointerEvents: "none" }} />
 
-        {/* Text content — above the cake */}
-        <div style={{ position: "relative", zIndex: 10, textAlign: "center", padding: "0 24px", marginBottom: "-40px" }}>
+        {/* Text content */}
+        <div style={{ position: "relative", zIndex: 10, textAlign: "center", maxWidth: "640px" }}>
           <div className="glass-badge" style={{ display: "inline-flex", marginBottom: "24px" }}>
             <Sparkles className="w-4 h-4 text-secondary" />
             <span>Now booking holiday orders</span>
@@ -40,14 +36,17 @@ export default function Hero() {
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
             </a>
           </div>
-
-          <p style={{ color: "rgba(255,133,162,0.4)", fontSize: "0.75rem", letterSpacing: "0.15em", marginTop: "24px" }}>
-            ↓ SCROLL TO SPIN THE CAKE
-          </p>
         </div>
 
-        {/* 3D Cake — spins on scroll, drops after halfway */}
-        <CakeScene />
+        {/* Real cake photo */}
+        <div style={{ position: "relative", zIndex: 5, marginTop: "48px", maxWidth: "420px", width: "100%" }}>
+          <div style={{ position: "absolute", inset: "-20%", background: "radial-gradient(circle, rgba(255,133,162,0.15) 0%, transparent 70%)", pointerEvents: "none", zIndex: -1 }} />
+          <img
+            src="/cake-hero.png"
+            alt="Beautiful four-tier wedding cake with pink roses"
+            style={{ width: "100%", height: "auto", borderRadius: "24px", filter: "drop-shadow(0 20px 60px rgba(255,133,162,0.3))" }}
+          />
+        </div>
       </div>
     </section>
   );
